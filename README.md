@@ -5,11 +5,11 @@ Il s'agit de parcourir le fichier /proc/$pid/pagemap d'un processus afin de retr
           Tracking des pages soft-dirty d’un processus
 
 Intervenants:
-  Alain Tchana (alain.tchana@ens-lyon.fr)
-  (Note: ce sujet a été rédigé par Stella et Lavoisier)
+          Alain Tchana (alain.tchana@ens-lyon.fr)
+          (Note: ce sujet a été rédigé par Stella et Lavoisier)
 
 Description
-    Information sur les pages et soft-dirty bits: Les informations concernant le mapping de
+          Information sur les pages et soft-dirty bits: Les informations concernant le mapping de
   l’espace d’adressage (virtuelle) d’un processus dans la mémoire physique sont contenues
   dans le fichier /proc/$pid/pagemap accessible depuis le userspace. Ce fichier contient un
   ensemble d’enregistrements de 64 bits chacun. Chaque enregistrement décrit une page
@@ -17,11 +17,11 @@ Description
   l’enregistrement correspondant (le “soft-dirty bit”) est marqué à 1 par le système
   d’exploitation.
   
-    Réactualisation du soft-dirty bit : Il est également possible de marquer à nouveau toutes les
+  Réactualisation du soft-dirty bit : Il est également possible de marquer à nouveau toutes les
   pages comme étant non salle c’est à dire placer le soft-dirty bit à 0. Pour cela il suffit d’écrire
   “4” dans le fichier /proc/$pid/clear_refs .
   
-    Le tracking de la modification de ce bit est très utile pour plusieurs applications user space,
+  Le tracking de la modification de ce bit est très utile pour plusieurs applications user space,
   comme par exemple le checkpointing de l’état d’un processus ou d’un container (le système
   CRIU), en vu de le migrer vers un autre ordinateur.
   L’objectif de ce TP est de tracker les pages virtuelles modifiées d’un processus, par un autre
